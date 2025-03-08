@@ -21,7 +21,7 @@
 - Gitlab：私有化部署
 
 ## 二、 git指令
-- **git reset：** **回溯**版本至之前某一次commit的版本![alt text](image-7.png)
+- **git reset：** **回溯**版本至之前某一次commit的版本![alt text](image-7.png){
 ps：当连续commit多个版本，但又觉得这些commit没有太大意义，就可利用git reset回退到某个版本，再重新commit，从而将这些连续提交合并为一个版本。（谨慎使用git reset --hard,此命令会清空选中版本与当前版本==之间==的工作区与暂存区内容）
 <br/>
 
@@ -29,7 +29,7 @@ ps：当连续commit多个版本，但又觉得这些commit没有太大意义，
   ps：linux下的rm指令只会删除工作区内容，而暂存区内容则需要git add命令更新删除。
 <br/>
 
-- **gitignore:** 忽略文件，不需要提交到仓库的文件![alt text](image-8.png)
+- **gitignore:** 忽略文件，不需要提交到仓库的文件![alt text](image-8.png){: width="350"}
   <br/>
 - **rm -rf .git:** 删除本地仓库(即删除文件夹里隐藏的.git文件)
 
@@ -99,10 +99,10 @@ ps：当连续commit多个版本，但又觉得这些commit没有太大意义，
 
 
 ## 六、Git flow工作流
-
-
-
-
+![alt text](image-21.png)
+![alt text](image-20.png)
+![alt text](image-19.png)
+![alt text](image-22.png)
 ---
 
 # <center>vscode 中 git 的使用方法
@@ -114,7 +114,6 @@ commit后，该键变为Publish Branch，点击Publish Branch再选择private or
 
 而左下角列表为，查看历史版本的==只读==文件。
 ![alt text](image-5.png)
-
 ## 二、在Github上新建repository，并导入本地文件
 
 在github上新建repository
@@ -129,9 +128,15 @@ commit后，该键变为Publish Branch，点击Publish Branch再选择private or
 点击add remote
 ![alt text](image-3.png)
 
-选择已创建好的repository
+选择已创建好的repository(此操作等于`git remote add <远程仓库别名>  < url >`)
 ![alt text](image-4.png)
-即可将本地文件上传到GitHub上已创建好的repository
+<br/>
+再点击public branch(此操作等于`git push -u origin main`)，即可将本地文件上传到GitHub上已创建好的repository
 
 ## 三、Tips
 
+1.利用vscode插件Git Graph查看版本分支图
+![alt text](image-17.png)
+![alt text](image-18.png)
+
+2.vscode左下角标签显示当前所在分支
