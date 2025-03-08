@@ -52,6 +52,7 @@ ps：当连续commit多个版本，但又觉得这些commit没有太大意义，
 ![alt text](image-13.png)
 >ps:
 >>1.`git remote add <远程仓库别名>  < url >`命令中，要设置远程仓库别名，是因为允许一个本地仓库关联多个远程仓库（可以使用`git remote remove <远程仓库别名>`命令删除已关联的远程仓库）
+>>
 >>2.`git branch -M main`为指定分支名称为main
 >>3.关联后需使用`git push -u origin main`来将本地仓库的main分支推送给远程仓库的main分支
 
