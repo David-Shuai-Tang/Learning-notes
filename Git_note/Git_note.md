@@ -103,6 +103,9 @@ ps：当连续commit多个版本，但又觉得这些commit没有太大意义，
 ![alt text](image-20.png)
 ![alt text](image-19.png)
 ![alt text](image-22.png)
+
+
+
 ---
 
 # <center>vscode 中 git 的使用方法
