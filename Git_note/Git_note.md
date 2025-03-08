@@ -36,8 +36,8 @@ ps：当连续commit多个版本，但又觉得这些commit没有太大意义，
 ## 三、Github
 
 ### 1.创建仓库
-- 本地创建仓库`git init`
-- 从远程服务器clone已存在的仓库`git clone`
+1. 从远程服务器clone已存在的仓库`git clone`
+2. 本地创建仓库`git init`
 
 ### 2. 加密传输
 本地仓库与远程仓库关联时，涉及加密传输。此时可选择采用**https**或**ssh**协议进行传输。
@@ -50,6 +50,12 @@ ps：当连续commit多个版本，但又觉得这些commit没有太大意义，
 2.将已有的本地仓库remote add到远程仓库完成关联
 ![alt text](image-12.png)
 ![alt text](image-13.png)
+>ps:
+>>1.`git remote add <远程仓库别名>  < url >`命令中，要设置远程仓库别名，是因为允许一个本地仓库关联多个远程仓库（可以使用`git remote remove <远程仓库别名>`命令删除已关联的远程仓库）
+>>2.`git branch -M main`为指定分支名称为main
+>>3.关联后需使用`git push -u origin main`来将本地仓库的main分支推送给远程仓库的main分支
+
+
 
 
 ### 4. pull、push、clone
