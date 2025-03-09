@@ -143,3 +143,16 @@ commit后，该键变为Publish Branch，点击Publish Branch再选择private or
 ![alt text](image-18.png)
 
 2.vscode左下角标签显示当前所在分支
+
+
+## 四、资源网址
+1. Git学习博客：https://liaoxuefeng.com/books/git/introduction/index.html
+<br/>
+
+2. 两小时速通Git：https://www.bilibili.com/video/BV1HM411377j/?spm_id_from=333.337.search-card.all.click&vd_source=87270fb74f6915a81aa5ead47461acd7
+<br/>
+
+3. Git官方中文文档：https://git-scm.com/book/zh/v2
+<br/>
+
+4. Github官方中文文档：https://docs.github.com/zh
