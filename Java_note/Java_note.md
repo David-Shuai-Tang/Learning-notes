@@ -99,6 +99,18 @@ Java定义了以下几种**基本数据**类型：
 - 布尔类型：boolean
 byte恰好就是一个字节，而long和double需要8个字节
 
+<br/>
+
+**引用数据**类型包括类、接口、数组、枚举、注解和字符串等
+引用数据类型的特点：
+1. 存储方式：引用数据类型的变量在栈上存储引用（句柄），而对象的具体信息存储在堆内存上。引用变量指向堆中对象的地址
+2. 默认值：引用数据类型的默认值是null，表示没有引用指向任何对象
+3. 参数传递：引用数据类型作为方法的参数传递时，传递的是对象的引用，可以修改对象的属性或状态
+4. 复制操作：引用数据类型进行复制时，只会复制对象的引用，两个变量指向同一个对象
+
+
+
+
 **常量：**
 定义变量的时候，如果加上**final**修饰符，这个变量就变成了常量：
 ```
@@ -113,7 +125,7 @@ PI = 300; // compile error!
 定义变量时，要遵循作用域最小化原则，尽量将变量定义在**尽可能小的作用域**，并且，**不要重复使用**变量名
 
 
-#### 1.2 运算
+#### 1.3 运算
 **运算优先级**
 在Java的计算表达式中，运算优先级从高到低依次是：
 - ()
@@ -137,6 +149,209 @@ Java的编译器对字符串做了特殊照顾，可以使用+连接任意字符
 
 Java的字符串除了是一个**引用类型**外，还有个重要特点，就是字符串**不可变**。
 > ps：引用数据类型是Java中两大数据类型之一，区别于基本数据类型。引用数据类型包括类、接口、数组、枚举、注解和字符串等
+
+
+#### 1.4 流程控制
+**输入与输出**
+
+使用`System.out.println()`来向屏幕**输出**一些内容。
+> println是print line的缩写，表示输出并换行。因此，如果输出后不想换行，可以用print()
+
+**格式化输出**使用System.out.printf()，通过使用占位符%?，printf()可以把后面的参数格式化成指定格式
+
+
+通过import语句导入`java.util.Scanner`,创建Scanner对象并传入`System.in`,有了Scanner对象后，要读取用户**输入的字符串**，使用`scanner.nextLine()`，要读取用户**输入的整数**，使用`scanner.nextInt()`。Scanner会自动转换数据类型，因此不必手动转换
+
+
+**if条件判断**
+```// 条件判断
+public class Main {
+    public static void main(String[] args) {
+        int n = 70;
+        if (n >= 90) {
+            System.out.println("优秀");
+        } else if (n >= 60) {
+            System.out.println("及格了");
+        } else {
+            System.out.println("挂科了");
+        }
+        System.out.println("END");
+    }
+}
+```
+
+
+**switch多重选择**
+```
+// switch
+public class Main {
+    public static void main(String[] args) {
+        int option = 99;
+        switch (option) {
+        case 1:
+            System.out.println("Selected 1");
+            break;
+        case 2:
+            System.out.println("Selected 2");
+            break;
+        case 3:
+            System.out.println("Selected 3");
+            break;
+        default:
+            System.out.println("Selected other");
+            break;
+        }
+    }
+}
+```
+<br/>
+**循环**
+while、dowhile、for、for each
+
+
+<br/>
+
+
+**break、continue**
+break语句总是跳出最近的一层循环；
+continue语句可以提前结束本次循环；
+break会跳出当前循环，也就是**整个**循环都不会执行了，而continue则是提前结束**本次**循环，直接继续执行**下次**循环
+
+### 2.面向对象编程 
+#### 2.1 面向对象基础
+在Java中，创建一个类，例如，给这个类命名为Person，就是定义一个class：
+```
+class Person {
+    public String name;
+    public int age;
+}
+```
+一个class可以包含多个**字段（field）**，字段用来描述一个类的特征。上面的Person类，我们定义了两个字段，一个是String类型的字段，命名为name，一个是int类型的字段，命名为age。因此，通过class，把一组数据汇集到一个对象上，实现了数据封装。
+
+public是用来修饰字段的，它表示这个字段**可以被外部访问**。
+
+<br/>
+定义了class，只是定义了对象模版，而要根据对象模版创建出真正的对象实例，必须用new操作符。
+
+**new操作符**可以**创建一个实例**，然后，我们需要定义一个引用类型的变量来指向这个实例：
+```
+Person ming = new Person();
+```
+> ps: 注意区分Person ming是定义Person类型的变量ming，而new Person()是创建Person实例
+
+<br/>
+
+访问实例变量可以用**变量.字段**，例如：
+```
+ming.name = "Xiao Ming"; // 对字段name赋值
+ming.age = 12; // 对字段age赋值
+System.out.println(ming.name); // 访问字段name
+
+Person hong = new Person();
+hong.name = "Xiao Hong";
+hong.age = 15;
+```
+> ps:一个Java源文件**可以包含多个类**的定义，但**只能定义一个public类**，且public类名必须与文件名一致。如果要定义多个public类，必须拆到多个Java源文件中。
+
+#### 2.2 方法
+为了避免外部代码直接去访问field，我们可以用private修饰field，拒绝外部访问。把field从public改成private，外部代码不能访问这些field。需要使用**方法（method）** 来让外部代码可以**间接修改**field
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Person ming = new Person();
+        ming.setName("Xiao Ming"); // 设置name
+        ming.setAge(12); // 设置age
+        System.out.println(ming.getName() + ", " + ming.getAge());
+    }
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public void setAge(int age) {
+        if (age < 0 || age > 100) {
+            throw new IllegalArgumentException("invalid age value");
+        }
+        this.age = age;
+    }
+}
+```
+> ps:`this`代表当前对象的引用，它始终指向当前实例
+
+虽然外部代码不能直接修改private字段，但是，外部代码可以调用方法setName()和setAge()来间接修改private字段。在方法内部，我们就有机会检查参数对不对。比如，setAge()就会检查传入的参数，参数超出了范围，直接报错。这样，外部代码就没有任何机会把age设置成不合理的值。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### java多线程
+Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。
+Java多线程编程的特点又在于：
+
+- 多线程模型是Java程序最基本的并发模型；
+- 后续读写网络、数据库、Web开发等都依赖Java多线程模型。
+
+要创建一个新线程非常容易，我们需要实例化一个Thread实例，然后调用它的start()方法：
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Thread t = new Thread();
+        t.start(); // 启动新线程
+    }
+}
+```
+> ps:当两个线程就开始同时运行，是由操作系统调度，程序本身无法确定线程的调度顺序。
+
+<br/>
+
+可以**对线程设定优先级**，设定优先级的方法是：
+
+`Thread.setPriority(int n) // 1~10, 默认值5`
+JVM自动把1（低）~10（高）的优先级映射到操作系统实际优先级上（不同操作系统有不同的优先级数量）。**优先级高的线程被操作系统调度的优先级==较高==**，操作系统对高优先级线程可能调度更频繁，但我们决**不能通过设置优先级来确保高优先级的线程一定会先执行**。
+
+练习
+
+
+
+
+
+
 
 
 
@@ -196,3 +411,26 @@ web开发通常指开发**服务器端**的web应用
 2.Idea官方中文文档：https://intellijidea.com.cn/help/idea/getting-started.html 
 <br/>
 3.
+
+
+
+
+
+## 一名优秀程序员的自我修养：
+如果想提高学习效率，此时需要构建自己的学习框架：
+比如再看一项技术的时候，可以从 What, Why, How 这个几个问题入手：
+- What: 挖掘这个技术或者框架是干什么的
+- Why: 它的优势在哪里，为什么要用它
+- How: 怎么用， Tutorial 就可以带我们入门
+  
+**用20 % 的时间上手，之后精通需要耗费 80% 的时间。**
+<br/><br/>
+
+
+我们看了文档，我们了解这门技术
+
+我们动手做了，我们掌握了这门技术
+
+我们教别人了，我们精通了这门技术
+
+**最好的学习方式是以分享驱动学习**。比如：写博客，讲 Session，或者教别人如何使用我们刚刚掌握的新技术。
