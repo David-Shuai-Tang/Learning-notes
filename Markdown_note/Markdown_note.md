@@ -27,8 +27,10 @@ b站：<https://www.bilibili.com/>
 [这里是b站](https://www.bilibili.com/)
 
 ## 5.图片
-直接cv
-![alt text](image.png)
+- 直接cv(无法按调整大小)
+ ![alt text](image.png)
+- 利用html语法`<img src = "图片路径" width = "50%">)`(可以调整图片大小)
+  <img src = "image.png" width = "30%">
 
 ## 6.列表
 + 无序列表
