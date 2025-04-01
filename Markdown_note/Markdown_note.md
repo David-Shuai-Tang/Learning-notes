@@ -30,7 +30,7 @@ b站：<https://www.bilibili.com/>
 - 直接cv(无法按调整大小)
  ![alt text](image.png)
 - 利用html语法`<img src = "图片路径" width = "50%">)`(可以调整图片大小)
-  <img src = "image.png" width = "30%">
+  <img src = "image.png" width = "10%">
 
 ## 6.列表
 + 无序列表
